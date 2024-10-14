@@ -54,65 +54,10 @@ class MainActivity : ComponentActivity() {
                                     BlankDemoPageActivity::class.java
                                 )
                             )
-                            test()
                         }, fontSize = 30.sp
                 )
 
             }
         }
     }
-
-    fun test() {
-
-        val sharedFlow = MutableSharedFlow<String>(1)
-        lifecycleScope.launch {
-
-            launch {
-                delay(2000)
-                sharedFlow.emit("123swe")
-            }
-            delay(3000)
-            Log.d(TAG, "test: before")
-            sharedFlow.collect { data ->
-                Log.d(TAG, "test collect data: ${data}")
-            }
-            Log.d(TAG, "test: after collect")
-        }
-
-
-//        val handler = CoroutineExceptionHandler { context, throwable ->
-//
-//            Log.d(TAG, "handler : throwable.msg: ${throwable.message} ")
-//        }
-//        lifecycleScope.launch(handler) {
-//            supervisorScope {
-//
-//                launch {
-//                    coroutineScope {
-//                        launch {
-//                            delay(1000)
-//                            throw IOException("test IOException")
-//                            Log.d(TAG, "test: first launch")
-//                        }
-//
-//                        launch {
-//                            delay(3000)
-//                            Log.d(TAG, "test: second launch")
-//                        }
-//                    }
-//                }
-//                launch {
-//                    throw IOException("test2 IOException")
-//                }
-//
-//            }
-//            Log.d(TAG, "test: after supervisorscope")
-//
-//        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-    }
-
 }
